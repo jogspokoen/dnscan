@@ -225,7 +225,7 @@ def zone_transfer(domain, ns):
             print(zone[n].to_text(n))    # Print raw zone
             if outfile:
                 print(zone[n].to_text(n), file=outfile)
-        sys.exit(0)
+        # sys.exit(0)
     except Exception:
         pass
 
@@ -354,15 +354,6 @@ if __name__ == "__main__":
             if args.zonetransfer:
                 sys.exit(0)
 
-            get_v6(target)
-            get_txt(target)
-            get_mx(target)
-            wildcard = get_wildcard(target)
-            if wildcard:
-                try:
-                    addresses.add(ipaddr(unicode(wildcard)))
-                except NameError:
-                    addresses.add(ipaddr(str(wildcard)))
             out.status("Scanning " + target + " for " + recordtype + " records")
             add_target(target)
 
