@@ -225,7 +225,7 @@ def zone_transfer(domain, ns):
             print(zone[n].to_text(n))    # Print raw zone
             if outfile:
                 print(zone[n].to_text(n), file=outfile)
-        sys.exit(0)
+        # sys.exit(0)
     except Exception:
         pass
 
@@ -343,7 +343,7 @@ if __name__ == "__main__":
                         print(rdata.address + " - " + col.brown + ns + col.end)
                         if outfile:
                             print(rdata.address + " - " + ns, file=outfile)
-                    zone_transfer(target, ns)
+                    # zone_transfer(target, ns)
             except SystemExit:
                 sys.exit(0)
             except:
@@ -354,9 +354,9 @@ if __name__ == "__main__":
             if args.zonetransfer:
                 sys.exit(0)
 
-            get_v6(target)
-            get_txt(target)
-            get_mx(target)
+            #get_v6(target)
+            #get_txt(target)
+            #get_mx(target)
             wildcard = get_wildcard(target)
             if wildcard:
                 try:
