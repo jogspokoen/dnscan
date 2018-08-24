@@ -152,10 +152,11 @@ def get_wildcard(target):
     res = lookup("a" + epochtime + "." + target, recordtype)
     if res:
         address = res[0].address
-        out.good(col.red + "Wildcard" + col.end + " domain found - " + col.brown + address + col.end)
+        #out.good(col.red + "Wildcard" + col.end + " domain found - " + col.brown + address + col.end)
         return address
     else:
-        out.verbose("No wildcard domain found")
+        pass
+        #out.verbose("No wildcard domain found")
 
 def get_nameservers(target):
     try:
