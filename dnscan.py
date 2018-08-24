@@ -322,7 +322,7 @@ if __name__ == "__main__":
     for subtarget in targets:
         global target
         target = subtarget
-        out.status("Processing domain {}".format(target))
+        # out.status("Processing domain {}".format(target))
         if args.tld:
             if "." in target:
                 out.warn("Warning: TLD scanning works best with just the domain root")
@@ -332,7 +332,7 @@ if __name__ == "__main__":
             queue.put(target)   # Add actual domain as well as subdomains
 
             nameservers = get_nameservers(target)
-            out.good("Getting nameservers")
+            #out.good("Getting nameservers")
             targetns = []       # NS servers for target
             try:    # Subdomains often don't have NS recoards..
                 for ns in nameservers:
@@ -340,9 +340,10 @@ if __name__ == "__main__":
                     res = lookup(ns, "A")
                     for rdata in res:
                         targetns.append(rdata.address)
-                        print(rdata.address + " - " + col.brown + ns + col.end)
+                        # print(rdata.address + " - " + col.brown + ns + col.end)
                         if outfile:
-                            print(rdata.address + " - " + ns, file=outfile)
+                            pass
+                            #print(rdata.address + " - " + ns, file=outfile)
                     # zone_transfer(target, ns)
             except SystemExit:
                 sys.exit(0)
@@ -350,7 +351,7 @@ if __name__ == "__main__":
                 out.warn("Getting nameservers failed")
     #    resolver.nameservers = targetns     # Use target's NS servers for lokups
     # Missing results using domain's NS - removed for now
-            out.warn("Zone transfer failed\n")
+            # out.warn("Zone transfer failed\n")
             if args.zonetransfer:
                 sys.exit(0)
 
@@ -363,7 +364,7 @@ if __name__ == "__main__":
                     addresses.add(ipaddr(unicode(wildcard)))
                 except NameError:
                     addresses.add(ipaddr(str(wildcard)))
-            out.status("Scanning " + target + " for " + recordtype + " records")
+            #out.status("Scanning " + target + " for " + recordtype + " records")
             add_target(target)
 
         for i in range(args.threads):
