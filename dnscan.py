@@ -310,7 +310,7 @@ if __name__ == "__main__":
     get_args()
     setup()
     if args.domain_list:
-        out.verbose("Domain list provided, will parse {} for domains.".format(args.domain_list))
+        #out.verbose("Domain list provided, will parse {} for domains.".format(args.domain_list))
         if not os.path.isfile(args.domain_list):
             out.fatal("Domain list {} doesn't exist!".format(args.domain_list))
             sys.exit(1)
@@ -349,7 +349,8 @@ if __name__ == "__main__":
             except SystemExit:
                 sys.exit(0)
             except:
-                out.warn("Getting nameservers failed")
+                pass
+                #out.warn("Getting nameservers failed")
     #    resolver.nameservers = targetns     # Use target's NS servers for lokups
     # Missing results using domain's NS - removed for now
             # out.warn("Zone transfer failed\n")
